@@ -35,8 +35,6 @@ const WriteForm = () => {
   const generatedEmail =
     lastMessage?.role === "assistant" ? lastMessage.content : null;
 
-  console.log(lastMessage);
-
   const onSubmit = (e: any) => {
     setInput(genPromt({ name, address, additionalInfo }));
     handleSubmit(e);
