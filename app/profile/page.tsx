@@ -1,79 +1,79 @@
-import * as React from "react"
- 
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-
+import VoteItem from "@/components/vote-item"
+import Image from "next/image"
 export default function Home() {
-  return (
-    <main>
-        <div className="flex flex-col items-center justify-between">
-            <Card className="w-[100%]">
-                <table>
-                    <tr>
-                        <td>
-                            {/* TODO - Need to resize the pic to be appropriate */}
-                            <img src="https://members-api.parliament.uk/api/Members/4514/Thumbnail" className="w-[70%%], .p-4"></img>
-                        </td>
-                        <td>
-                            <CardHeader>
-                                <CardTitle className="pb-4">Kier Starmer</CardTitle>
-                                <CardDescription>Constituency - Holborn and St Pancreas</CardDescription>
-                                <CardDescription>Party - Labour</CardDescription>
-                            </CardHeader>
-                        </td>
-                    </tr>
-                </table>
-            </Card>    
-        </div>
+    return (
+        <main className="w-full">
+            <div className="w-full h-64 bg-red-500" />
+            <section className="flex flex-col w-full max-w-6xl mx-auto items-center justify-between -mt-28">
+                <div className="w-full flex flex-row justify-center">
+                    <figure className="w-52 h-52 rounded-full border-4 border-white overflow-hidden relative">
+                        {// eslint-disable-next-line @next/next/no-img-element
+                        <img src="https://members-api.parliament.uk/api/Members/4514/Thumbnail" className="w-[70%%], .p-4" alt="profile"></img>
+                        }
+                    </figure>
+                </div>
+                <div className="w-lg mx-auto flex flex-col items-center gap-1 text-2xl">
+                    <p className="text-center font-medium">
+                        Kier Starmer, <span className="text-red-500 font-normal">Labour</span>
+                    </p>
+                    <p className="text-center text-lg text-gray-500">
+                        £15,000,000 in total donations
+                    </p>
+                </div>
+            </section>
 
-        {/* Show what bills they have voted for (Yes - Green, No - Red, Abstain - Grey) */}
-        <div className="flex items-center justify-between">
-            <Card className="w-[20]" >
-                <CardHeader>
-                    <CardTitle className="pb-4">Motion - Tax the rich?</CardTitle>
-                    <CardDescription>Answer - Abstain</CardDescription>
-                </CardHeader>
-            </Card>
-            <Card className="w-[20]">
-                <CardHeader>
-                    <CardTitle className="pb-4">Motion - Bun Jeremy Corbyn?</CardTitle>
-                    <CardDescription>Answer - Yes</CardDescription>
-                </CardHeader>
-            </Card>
-            <Card className="w-[20]">
-                <CardHeader>
-                    <CardTitle className="pb-4">Motion - Am I the worst?</CardTitle>
-                    <CardDescription>Answer - No</CardDescription>
-                </CardHeader>
-            </Card>
-        </div>
+            <section className="w-full max-w-6xl mx-auto mt-8 flex flex-col">
+                <p className="font-semibold text-4xl mb-2">
+                    Voting History
+                </p>
+                <div className="w-full grid grid-cols-4 gap-10">
+                    <VoteItem
+                        title="Votes against Palestine"
+                        value="24"
+                    />
+                    <VoteItem
+                        title="Publicly supported occupation"
+                        value="17"
+                    />
+                    <VoteItem
+                        title="Praised Israel"
+                        value="43"
+                    />
+                    <VoteItem
+                        title="Islamaphobic comments"
+                        value="23K"
+                    />
+                    <VoteItem
+                        title="Appeared publicly with Israeli flag"
+                        value="1.2K"
+                    />
+                </div>
+            </section>
 
-        <div className="justify-left">
-            <h2>Finance/Affiliations</h2>
+            <section className="w-full max-w-6xl mx-auto mt-8 flex flex-col mt-20">
+                <p className="font-semibold text-4xl mb-2">
+                    Affiliations
+                </p>
+                <div className="w-full grid grid-cols-3 gap-10">
+                    <div className="border rounded-md bg-gray-50 p-3 flex flex-col">
+                        Friend of Israel
+                    </div>
+                    <div className="border rounded-md bg-gray-50 p-3 flex flex-col">
+                        New Labour Party
+                    </div>
+                </div>
+            </section>
+
+            <div className="justify-left">
+                <h2>Finance/Affiliations</h2>
                 <ul>
                     <li>Labour Friends of Israel</li>
                     <li>etc</li>
                 </ul>
-            <h2>Socials</h2>
-            <h2>Votes</h2>
-            <h2>Contact</h2>            
-        </div>
+                <h2>Socials</h2>
+                <h2>Votes</h2>
+                <h2>Contact</h2>
+            </div>
             {/* <CardContent>
                 <form>
                     <div className="grid w-full items-center gap-4">
@@ -102,6 +102,6 @@ export default function Home() {
                 <Button variant="outline">Cancel</Button>
                 <Button>Deploy</Button>
             </CardFooter> */}
-    </main>
-  )
+        </main>
+    )
 }
