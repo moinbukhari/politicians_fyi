@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "../lib/utils";
 import "./globals.css";
-
+import { Navbar } from "@/components/Navbar";
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -26,13 +26,9 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {/* <nav className="flex h-full w-full bg-rose-600 px-10 py-10 items-center justify-center">
-          <h1 className="text-5xl font-extrabold text-center text-slate-100 max-w-xl">
-            Who&apos;s Funding War Crimes?
-          </h1>
-        </nav> */}
-
-          {children}
+       
+        <Navbar/>
+        {children}
 
       </body>
     </html>

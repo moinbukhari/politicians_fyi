@@ -1,107 +1,166 @@
-import VoteItem from "@/components/vote-item"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import VoteItem from "@/components/vote-item";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import Image from "next/image";
+import Link from "next/link";
 export default function Home() {
-    return (
-        <main className="w-full">
-            <div className="w-full h-64 bg-red-500" />
-            <section className="flex flex-col w-full max-w-6xl mx-auto items-center justify-between -mt-28">
-                <div className="w-full flex flex-row justify-center">
-                    <figure className="w-52 h-52 rounded-full border-4 border-white overflow-hidden relative">
-                        {// eslint-disable-next-line @next/next/no-img-element
-                        <img src="https://members-api.parliament.uk/api/Members/4514/Thumbnail" className="w-[70%%], .p-4" alt="profile"></img>
-                        }
-                    </figure>
-                </div>
-                <div className="w-lg mx-auto flex flex-col items-center gap-1 text-2xl">
-                    <p className="text-center font-medium">
-                        Kier Starmer, <span className="text-red-500 font-normal">Labour</span>
-                    </p>
-                    <p className="text-center text-lg text-gray-500">
-                        £15,000,000 in total donations
-                    </p>
-                </div>
-            </section>
-
-            <section className="w-full max-w-6xl mx-auto mt-8 flex flex-col">
-                <p className="font-semibold text-4xl mb-2">
-                    Voting History
-                </p>
-                <div className="w-full grid grid-cols-4 gap-10">
-                    <VoteItem
-                        title="Votes against Palestine"
-                        value="24"
-                    />
-                    <VoteItem
-                        title="Publicly supported occupation"
-                        value="17"
-                    />
-                    <VoteItem
-                        title="Praised Israel"
-                        value="43"
-                    />
-                    <VoteItem
-                        title="Islamaphobic comments"
-                        value="23K"
-                    />
-                    <VoteItem
-                        title="Appeared publicly with Israeli flag"
-                        value="1.2K"
-                    />
-                </div>
-            </section>
-
-            <section className="w-full max-w-6xl mx-auto mt-8 flex flex-col mt-20">
-                <p className="font-semibold text-4xl mb-2">
-                    Affiliations
-                </p>
-                <div className="w-full grid grid-cols-3 gap-10">
-                    <div className="border rounded-md bg-gray-50 p-3 flex flex-col">
-                        Friend of Israel
-                    </div>
-                    <div className="border rounded-md bg-gray-50 p-3 flex flex-col">
-                        New Labour Party
-                    </div>
-                </div>
-            </section>
-
-            <div className="justify-left">
-                <h2>Finance/Affiliations</h2>
-                <ul>
-                    <li>Labour Friends of Israel</li>
-                    <li>etc</li>
-                </ul>
-                <h2>Socials</h2>
-                <h2>Votes</h2>
-                <h2>Contact</h2>
+  const party = "L";
+  return (
+    <main className="w-full min-h-screen bg-slate-100 py-4 flex flex-col gap-10 px-8 ">
+      <section className="flex w-full max-w-4xl mx-auto items-start gap-6 justify-between ">
+        <Image
+          src="/assets/keir_profile.jpg"
+          alt="profile pic of keir"
+          className="rounded-lg"
+          width={200}
+          height={200}
+        />
+        <div className="flex flex-col gap-2">
+          <p className="text-4xl font-bold ">Keir Starmer MP</p>
+          <div className="flex gap-2 ">
+            <p>Holborn & St Pancras</p>
+            <p className={` px-[3px] py-[1px] rounded-sm  ${party ==="L" ? "bg-red-200 text-red-500": " bg-blue-200 text-blue-500"}`}>
+              Labour
+            </p>
+          </div>
+          <div className="flex gap-2 justify-between items-start w-[60%]">
+            <div className="flex flex-col text-center justify-center items-center">
+              <div className="text-xl font-bold">1</div>
+              <div className="text-sm">Votes</div>
             </div>
-            {/* <CardContent>
-                <form>
-                    <div className="grid w-full items-center gap-4">
-                        <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="name">Name</Label>
-                            <Input id="name" placeholder="Name of your project" />
-                        </div>
-                        <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="framework">Framework</Label>
-                            <Select>
-                                <SelectTrigger id="framework">
-                                    <SelectValue placeholder="Select" />
-                                </SelectTrigger>
-                                <SelectContent position="popper">
-                                    <SelectItem value="next">Next.js</SelectItem>
-                                    <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                                    <SelectItem value="astro">Astro</SelectItem>
-                                    <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                     </div>
-                </form>
-            </CardContent> */}
-            {/* <CardFooter className="flex justify-between">
-                <Button variant="outline">Cancel</Button>
-                <Button>Deploy</Button>
-            </CardFooter> */}
-        </main>
-    )
+            <div className="flex flex-col text-center justify-center items-center">
+              <div className="text-xl font-bold">1</div>
+              <div className="text-sm">Affiliations & Finances</div>
+            </div>
+            <div className="flex flex-col text-center justify-center items-center">
+              <div className="text-xl font-bold">1</div>
+              <div className="text-sm">Quotes</div>
+            </div>
+          </div>
+        </div>
+
+        <Image
+          src="/assets/parliment.png"
+          alt="parliment logo"
+          className="rounded-md"
+          width={100}
+          height={100}
+        />
+      </section>
+
+      <section className="flex flex-col gap-4 relative pb-10">
+        <div className="flex justify-between w-full gap-4">
+          <div className="flex flex-col ">
+            <div className="font-bold text-4xl">Votes</div>
+            <div className="text-slate-500">
+              Personal record voting in the UK parliment
+            </div>
+          </div>
+          <Button>Write to My MP {"->"}</Button>
+        </div>
+        <div className="flex gap-6 flex-wrap sm:flex-nowrap">
+          <Card className="w-full flex flex-col justify-between">
+            <CardHeader>
+              <CardTitle>
+                This is where the legislation bill question is going to be added
+              </CardTitle>
+            </CardHeader>
+            <CardFooter className="flex justify-between">
+              <p className="font-semibold text-lg text-green-600 uppercase">
+                For
+              </p>
+              <p>{"->"}</p>
+            </CardFooter>
+          </Card>
+          <Card className="w-full flex flex-col justify-between">
+            <CardHeader>
+              <CardTitle>Personal Record Voting in the UK Parliment</CardTitle>
+            </CardHeader>
+            <CardFooter className="flex justify-between">
+              <p className="font-semibold text-lg text-red-600 uppercase">
+                Against
+              </p>
+              <p>{"->"}</p>
+            </CardFooter>
+          </Card>
+          <Card className="w-full flex flex-col justify-between">
+            <CardHeader>
+              <CardTitle>
+                This is where the legislation bill question is going to be added
+              </CardTitle>
+            </CardHeader>
+            <CardFooter className="flex justify-between">
+              <p className="font-semibold text-lg text-orange-600 uppercase">
+                Abstained
+              </p>
+              <p>{"->"}</p>
+            </CardFooter>
+          </Card>
+        </div>
+        <Link className="absolute bottom-0 right-0 underline underline-offset-4 text-blue-600 hover:text-blue-800 " href={""}>See more</Link>
+      </section>
+
+      <section className="flex flex-col gap-4 relative pb-10">
+        <div className="flex justify-between w-full gap-4">
+          <div className="flex flex-col ">
+            <div className="font-bold text-4xl">Quotes</div>
+            <div className="text-slate-500">
+              Personal record voting in the UK parliment
+            </div>
+          </div>
+          <Button>Write to My MP {"->"}</Button>
+        </div>
+        <div className="flex gap-6 flex-wrap ">
+          <Card className="w-full flex flex-col justify-between">
+            <CardHeader>
+              <CardTitle className="text-md">
+                {`"This is where the legislation bill question is going to be added."`}
+              </CardTitle>
+            </CardHeader>
+            <CardFooter className="flex justify-between">
+              <p className="font-normal text-sm text-slate-600 ">
+                March 2023 - The Independent - Article
+              </p>
+              <p>{"->"}</p>
+            </CardFooter>
+          </Card>
+          <Card className="w-full flex flex-col justify-between">
+            <CardHeader>
+              <CardTitle className="text-md">
+                {`"This is where the legislation bill question is going to be added."`}
+              </CardTitle>
+            </CardHeader>
+            <CardFooter className="flex justify-between">
+              <p className="font-normal text-sm text-slate-600 ">
+                March 2023 - The Independent - Article
+              </p>
+              <p>{"->"}</p>
+            </CardFooter>
+          </Card>
+          <Card className="w-full flex flex-col justify-between">
+            <CardHeader>
+              <CardTitle className="text-md">
+                {`"This is where the legislation bill question is going to be added."`}
+              </CardTitle>
+            </CardHeader>
+            <CardFooter className="flex justify-between">
+              <p className="font-normal text-sm text-slate-600 ">
+                March 2023 - The Independent - Article
+              </p>
+              <p>{"->"}</p>
+            </CardFooter>
+          </Card>
+        </div>
+        <Link className="absolute bottom-0 right-0 underline underline-offset-4 text-blue-600 hover:text-blue-800 " href={""}>See more</Link>
+      </section>
+    </main>
+  );
 }
