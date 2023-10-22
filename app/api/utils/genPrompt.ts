@@ -22,7 +22,7 @@ Please make sure the language is:
     ];
     promptString += `
 Here is some additional personal info: 
-  ${additionalPersonalInfo.join("\n")}
+${additionalPersonalInfo.join("\n")}
     `;
   }
 
