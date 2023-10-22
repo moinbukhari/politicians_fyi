@@ -14,7 +14,7 @@ const font = Manrope({
 
 export const Navbar = () => {
     return(
-        <div className="w-full flex justify-between items-center py-2 px-4 border-b border-primary/10 bg-secondary h-16">
+        <div className="w-full flex justify-between items-center py-2 px-4 border-b border-primary/10 bg-[#F9F8F6] h-16">
             <div className="flex items-center">
                 <Link href={"/"}>
                     <h1 className={cn(" text-xl md:text-3xl font-bold text-primary", font.className)}>

@@ -14,7 +14,7 @@ import Link from "next/link";
 export default function Home() {
   const party = "L";
   return (
-    <main className="w-full min-h-screen bg-slate-100 py-4 flex flex-col gap-10 px-8 ">
+    <main className="w-full min-h-screen bg-[#F9F8F6]  py-4 flex flex-col gap-10 px-8 ">
       <section className="flex w-full max-w-4xl mx-auto items-start gap-6 justify-between ">
         <Image
           src="/assets/keir_profile.jpg"
