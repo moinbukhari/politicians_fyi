@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import WriteButton from "@/components/write/WriteButton";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -27,7 +28,13 @@ export default function Home() {
           <p className="text-4xl font-bold ">Keir Starmer MP</p>
           <div className="flex gap-2 ">
             <p>Holborn & St Pancras</p>
-            <p className={` px-[3px] py-[1px] rounded-sm  ${party ==="L" ? "bg-red-200 text-red-500": " bg-blue-200 text-blue-500"}`}>
+            <p
+              className={` px-[3px] py-[1px] rounded-sm  ${
+                party === "L"
+                  ? "bg-red-200 text-red-500"
+                  : " bg-blue-200 text-blue-500"
+              }`}
+            >
               Labour
             </p>
           </div>
@@ -64,7 +71,7 @@ export default function Home() {
               Personal record voting in the UK parliment
             </div>
           </div>
-          <Button>Write to My MP {"->"}</Button>
+          <WriteButton />
         </div>
         <div className="flex gap-6 flex-wrap sm:flex-nowrap">
           <Card className="w-full flex flex-col justify-between">
@@ -105,7 +112,12 @@ export default function Home() {
             </CardFooter>
           </Card>
         </div>
-        <Link className="absolute bottom-0 right-0 underline underline-offset-4 text-blue-600 hover:text-blue-800 " href={""}>See more</Link>
+        <Link
+          className="absolute bottom-0 right-0 underline underline-offset-4 text-blue-600 hover:text-blue-800 "
+          href={""}
+        >
+          See more
+        </Link>
       </section>
 
       <section className="flex flex-col gap-4 relative pb-10">
@@ -116,7 +128,7 @@ export default function Home() {
               Personal record voting in the UK parliment
             </div>
           </div>
-          <Button>Write to My MP {"->"}</Button>
+          <WriteButton />
         </div>
         <div className="flex gap-6 flex-wrap ">
           <Card className="w-full flex flex-col justify-between">
@@ -159,7 +171,12 @@ export default function Home() {
             </CardFooter>
           </Card>
         </div>
-        <Link className="absolute bottom-0 right-0 underline underline-offset-4 text-blue-600 hover:text-blue-800 " href={""}>See more</Link>
+        <Link
+          className="absolute bottom-0 right-0 underline underline-offset-4 text-blue-600 hover:text-blue-800 "
+          href={""}
+        >
+          See more
+        </Link>
       </section>
     </main>
   );
