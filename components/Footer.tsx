@@ -74,7 +74,7 @@ export default function Footer() {
         Footer
       </h2>
       <div className="container">
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
+        <div className=" border-t border-gray-900/10 pt-8 lg:flex lg:items-center lg:justify-between">
           <div>
             <h3 className="text-sm font-semibold leading-6 text-gray-900">
               Subscribe to our newsletter
@@ -121,7 +121,7 @@ export default function Footer() {
             ))}
           </div>
           <p className="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
-            &copy; 2020 Your Company, Inc. All rights reserved.
+            &copy; 2023 Warcrimes.fyi | All rights reserved.
           </p>
         </div>
       </div>
