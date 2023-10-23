@@ -1,22 +1,25 @@
+import ProfileQuotes from "@/components/profile-quotes";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-interface PageProps {
+
+interface IProfilePageProps {
   params: {
     id: number;
   };
 }
-export default function Page({ params }: PageProps) {
+
+export default function Page(props: IProfilePageProps) {
+  const { params } = props;
   const party = "Labour";
+  
   return (
     <main className="w-full min-h-screen flex justify-center ">
       <div className=" py-4 flex flex-col gap-10 px-8  justify-center items-center max-w-4xl">
@@ -148,47 +151,7 @@ export default function Page({ params }: PageProps) {
             </div>
             <Button>Write to My MP {"->"}</Button>
           </div>
-          <div className="flex gap-6 flex-wrap ">
-            <Card className="w-full flex flex-col justify-between">
-              <CardHeader>
-                <CardTitle className="text-md">
-                  {`"This is where the legislation bill question is going to be added."`}
-                </CardTitle>
-              </CardHeader>
-              <CardFooter className="flex justify-between">
-                <p className="font-normal text-sm text-slate-600 ">
-                  March 2023 &middot; The Independent &middot; Article
-                </p>
-                <p>{"->"}</p>
-              </CardFooter>
-            </Card>
-            <Card className="w-full flex flex-col justify-between">
-              <CardHeader>
-                <CardTitle className="text-md">
-                  {`"This is where the legislation bill question is going to be added."`}
-                </CardTitle>
-              </CardHeader>
-              <CardFooter className="flex justify-between">
-                <p className="font-normal text-sm text-slate-600 ">
-                  March 2023 &middot; The Independent &middot; Article
-                </p>
-                <p>{"->"}</p>
-              </CardFooter>
-            </Card>
-            <Card className="w-full flex flex-col justify-between">
-              <CardHeader>
-                <CardTitle className="text-md">
-                  {`"This is where the legislation bill question is going to be added."`}
-                </CardTitle>
-              </CardHeader>
-              <CardFooter className="flex justify-between">
-                <p className="font-normal text-sm text-slate-600 ">
-                  March 2023 &middot; The Independent &middot; Article
-                </p>
-                <p>{"->"}</p>
-              </CardFooter>
-            </Card>
-          </div>
+          <ProfileQuotes />
           <Link
             className="absolute bottom-0 right-0 underline underline-offset-4 text-blue-600 hover:text-blue-800 "
             href={""}
