@@ -16,34 +16,20 @@ const party_abbreviations = {
   Con: "Conservative",
 };
 
-function getPartyColoursByAbbreviation(party: string): [string, string] {
-  let bg: string;
-  let text: string;
-
-  switch (party) {
-    case "Lab":
-      return ["red", "red"]
-    case "Con":
-      return ["blue", "blue"]
-    case "Green":
-      return ["green", "green"]
-    case "LD":
-      return ["orange", "orange"]
-    case "SNP":
-      return ["yellow", "yellow"]
-    case "Ind":
-      return ["gray", "gray"]
-    default:
-      return ["gray", "black"]
-  }
-}
+const partyColors = {
+  Lab: "ring-red-600/20 text-red-700 bg-red-50",
+  Con: "ring-blue-600/20 text-blue-700 bg-blue-50",
+  Green: "ring-green-600/20 text-green-700 bg-green-50",
+  LD: "ring-orange-600/20 text-orange-700 bg-orange-50",
+  SNP: "ring-yellow-600/20 text-yellow-700 bg-yellow-50",
+  Ind: "ring-gray-600/20 text-gray-700 bg-gray-50",
+};
 
 function getPartyColoursByPerson(person: any) {
-  const [bg, text] = getPartyColoursByAbbreviation(person.party_abbreviation)
+  const [bg, text] = getPartyColoursByAbbreviation(person.party_abbreviation);
 
-  return `ring-${bg}-600/20 text-${text}-700 bg-${bg}-50`
+  return `ring-${bg}-600/20 text-${text}-700 bg-${bg}-50`;
 }
-
 
 export default async function PoliticiansList() {
   const data = await getData();
@@ -77,7 +63,7 @@ export default async function PoliticiansList() {
                   <span
                     className={cn(
                       "inline-flex items-center rounded-full  px-2 py-1 text-xs font-medium  ring-1 ring-inset ",
-                      getPartyColoursByPerson(person)
+                      partyColors[person.party_abbreviation]
                     )}
                   >
                     {party_abbreviations[person.party_abbreviation]}
