@@ -1,7 +1,7 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 import {
   Card,
   CardContent,
@@ -11,10 +11,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
 import { politicians, type Politician } from "@/lib/politicians";
-
 import { Badge } from "@/components/ui/badge";
+import classNames from "classnames";
 
 export default function Home() {
   const router = useRouter();
@@ -105,31 +104,27 @@ export default function Home() {
           <Card
             key={index}
             onClick={() => handleProfile(politician)}
-            className={`${
-              politician.party === "Labour"
-                ? "border-red-200"
-                : "border-blue-200"
-            } hover:shadow-md hover:bg-gray-100 ${
-              politician.party === "Labour"
-                ? "hover:border-red-200"
-                : "hover:border-blue-200"
-            } transition duration-300`}
+            className={classNames(
+              "hover:shadow-md transition duration-300 cursor-pointer group",
+              politician.party === "Labour" ? "border-red-200 hover:border-red-200 hover:bg-red-200/10" : "border-blue-200 hover:border-blue-200 hover:bg-blue-200/10",
+            )}
           >
             <CardHeader>
               <CardTitle>{politician.name}</CardTitle>
               <CardDescription>{politician.constituency}</CardDescription>
               <CardDescription
-                
+
               >
-                <Badge variant={"outline"} className={`rounded-sm w-max ${
-                  politician.party === "Labour"
+                <Badge variant={"outline"} className={`rounded-sm w-max ${politician.party === "Labour"
                     ? "bg-red-200 text-red-500"
                     : " bg-blue-200 text-blue-500"
-                }`}>{politician.party}</Badge>
+                  }`}>{politician.party}</Badge>
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <img src={politician.image} />
+              <figure className="overflow-hidden">
+                <img src={politician.image} className="group-hover:scale-105 duration-200" />
+              </figure>
             </CardContent>
             <CardFooter className="flex flex-col justify-center">
               <div className="flex gap-2 justify-between items-start w-[60%]">
