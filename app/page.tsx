@@ -41,7 +41,7 @@ export default function Home() {
           </h3>
         </div>
 
-        <form onSubmit={handleSubmit} method="post" className="pt-2">
+        <form onSubmit={handleSubmit} method="post" className="pt-2 px-4">
           <div className="relative w-full text-center">
             <div className="inline-block relative w-full md:max-w-2xl">
               <input
@@ -69,7 +69,7 @@ export default function Home() {
           </div>
         </form>
 
-        <div className="text-center pt-2">
+        <div className="text-center pt-2 px-4">
           Share on{" "}
           <a href="#" className="text-blue-500 underline pr-0.1">
             Twitter
@@ -84,7 +84,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-10 px-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-10 px-4">
         {filteredPoliticians.map((politician, index) => <HomepageCard key={index} politician={politician} />)}
       </div>
     </main>
