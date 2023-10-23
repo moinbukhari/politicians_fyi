@@ -17,7 +17,7 @@ const WriteForm = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [additionalInfo, setAdditionalInfo] = useState("");
-  const [prompt, setPrompt] = useState("");
+  const [template, setTemplate] = useState("");
 
   // setup chat
   const { setInput, handleSubmit, isLoading, messages } = useChat({
@@ -29,6 +29,12 @@ const WriteForm = () => {
       },
       prompt,
     },
+    // TODO: Choose if users edit on-screen OR copy, paste, and edit else
+    // onResponse: () => setTemplate(""),
+    // onFinish(message) {
+    //   setTemplate(message.content);
+    //   console.log("template", message.content);
+    // },
   });
 
   const lastMessage = messages[messages.length - 1];
@@ -83,26 +89,25 @@ const WriteForm = () => {
                 Your generated email
               </h2>
             </div>
-            <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
-              {generatedEmail
-                .substring(generatedEmail.indexOf("1") + 3)
-                .split("2.")
-                .map((email) => {
-                  return (
-                    <span
-                      className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border whitespace-pre-line"
-                      onClick={() => {
-                        navigator.clipboard.writeText(email);
-                        // toast("Bio copied to clipboard", {
-                        //   icon: "✂️",
-                        // });
-                      }}
-                      key={email}
-                    >
-                      <p>{email}</p>
-                    </span>
-                  );
-                })}
+            <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto whitespace-pre-line h-full">
+              {template == "" ? (
+                <span
+                  className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border "
+                  onClick={() => {
+                    navigator.clipboard.writeText(generatedEmail);
+                    // toast("Bio copied to clipboard", {
+                    //   icon: "✂️",
+                    // });
+                  }}
+                >
+                  {generatedEmail}
+                </span>
+              ) : (
+                <Textarea
+                  value={template}
+                  onChange={(e) => setTemplate(e.target.value)}
+                />
+              )}
             </div>
           </>
         )}
