@@ -122,7 +122,7 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <figure className="overflow-hidden">
+              <figure className="overflow-hidden aspect-[8/10]">
                 <img src={politician.image} className="group-hover:scale-105 duration-200" />
               </figure>
             </CardContent>
@@ -146,7 +146,7 @@ export default function Home() {
                 </div>
               </div>
             </CardFooter>
-            <CardFooter>
+            <CardFooter className="flex flex-row justify-end">
               <Button className="w-max bg-blue-600 text-white rounded-md hover:bg-blue-700">
                 Write to MP {"->"}
               </Button>
