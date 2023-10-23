@@ -89,8 +89,8 @@ const WriteForm = () => {
                 .split("2.")
                 .map((email) => {
                   return (
-                    <div
-                      className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+                    <span
+                      className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border whitespace-pre-line"
                       onClick={() => {
                         navigator.clipboard.writeText(email);
                         // toast("Bio copied to clipboard", {
@@ -100,7 +100,7 @@ const WriteForm = () => {
                       key={email}
                     >
                       <p>{email}</p>
-                    </div>
+                    </span>
                   );
                 })}
             </div>
