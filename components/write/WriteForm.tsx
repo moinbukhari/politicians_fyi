@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useChat, useCompletion } from "ai/react";
 
 // shadcn/ui
@@ -16,13 +16,23 @@ import { Toaster } from "@/components/ui/toaster";
 import genPromt from "@/app/api/utils/genPrompt";
 
 const WriteForm = () => {
+  const templateRef = useRef<null | HTMLDivElement>(null);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [additionalInfo, setAdditionalInfo] = useState("");
   const [template, setTemplate] = useState("");
+  // TODO: Add onscreen editing
+  // const [isFinished, setIsFinished] = useState<boolean>(false);
 
   // toast
   const { toast } = useToast();
+
+  // when ai response comes in, scroll to it
+  const scroll = () => {
+    if (templateRef.current !== null) {
+      templateRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   // setup chat
   const { setInput, handleSubmit, isLoading, messages } = useChat({
@@ -33,17 +43,27 @@ const WriteForm = () => {
         additionalInfo,
       },
     },
-    // TODO: Choose if users edit on-screen OR copy, paste, and edit else
-    // onResponse: () => setTemplate(""),
-    // onFinish(message) {
-    //   setTemplate(message.content);
-    //   console.log("template", message.content);
-    // },
+    // TODO: Add onscreen editing
+    onResponse() {
+      scroll();
+      // setTemplate("");
+      // setIsFinished(false);
+    },
+    onFinish(message) {
+      // setIsFinished(true);
+      // setTemplate(message.content);
+      // console.log("template", message.content);
+    },
   });
 
   const lastMessage = messages[messages.length - 1];
   const generatedEmail =
     lastMessage?.role === "assistant" ? lastMessage.content : null;
+
+  // scroll every time data streams in
+  useEffect(() => {
+    scroll();
+  }, [generatedEmail]);
 
   const onSubmit = (e: any) => {
     setInput(genPromt({ name, address, additionalInfo }));
@@ -120,6 +140,7 @@ const WriteForm = () => {
           </>
         )}
       </output>
+      <div className="pt-12" ref={templateRef}></div>
     </div>
   );
 };
