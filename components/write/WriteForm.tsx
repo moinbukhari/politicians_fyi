@@ -9,6 +9,8 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
 import { Textarea } from "../ui/textarea";
+import { useToast } from "../ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 // utils
 import genPromt from "@/app/api/utils/genPrompt";
@@ -19,6 +21,9 @@ const WriteForm = () => {
   const [additionalInfo, setAdditionalInfo] = useState("");
   const [template, setTemplate] = useState("");
 
+  // toast
+  const { toast } = useToast();
+
   // setup chat
   const { setInput, handleSubmit, isLoading, messages } = useChat({
     body: {
@@ -27,7 +32,6 @@ const WriteForm = () => {
         address,
         additionalInfo,
       },
-      prompt,
     },
     // TODO: Choose if users edit on-screen OR copy, paste, and edit else
     // onResponse: () => setTemplate(""),
@@ -48,6 +52,7 @@ const WriteForm = () => {
 
   return (
     <div>
+      <Toaster />
       <form className="grid gap-4 mb-6" onSubmit={onSubmit}>
         <Label htmlFor="name">Name</Label>
         <Input
@@ -95,9 +100,11 @@ const WriteForm = () => {
                   className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border "
                   onClick={() => {
                     navigator.clipboard.writeText(generatedEmail);
-                    // toast("Bio copied to clipboard", {
-                    //   icon: "✂️",
-                    // });
+                    toast({
+                      title: "Template Copied",
+                      description:
+                        "Email template was copied. Now paste, edit, and send to your MP!",
+                    });
                   }}
                 >
                   {generatedEmail}
