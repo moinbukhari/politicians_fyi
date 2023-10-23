@@ -1,3 +1,16 @@
+// "use client";
+
+// export default function Home() {
+
+//   return (
+//     <div className="">
+//       <main className="container flex-1"></main>
+//     </div>
+//   );
+// }
+
+// "mx-auto mt-8 max-w-2xl px-4 pb-16 sm:px-6 sm:pb-24 lg:max-w-7xl lg:px-8"
+
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -85,7 +98,9 @@ export default function Home() {
       </div>
 
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 mt-10 px-4">
-        {filteredPoliticians.map((politician, index) => <HomepageCard key={index} politician={politician} />)}
+        {filteredPoliticians.map((politician, index) => (
+          <HomepageCard key={index} politician={politician} />
+        ))}
       </div>
     </main>
   );
