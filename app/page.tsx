@@ -84,7 +84,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-8 xl:gap-4 mt-10 px-4">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 mt-10 px-4">
         {filteredPoliticians.map((politician, index) => <HomepageCard key={index} politician={politician} />)}
       </div>
     </main>

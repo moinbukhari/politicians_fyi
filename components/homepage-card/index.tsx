@@ -44,7 +44,7 @@ export default function HomepageCard(props: IHomepageCardProps) {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <figure className="overflow-hidden aspect-[8/10]">
+                <figure className="overflow-hidden aspect-square">
                     <img src={politician.image} className="group-hover:scale-105 duration-200" />
                 </figure>
             </CardContent>
