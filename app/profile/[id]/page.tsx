@@ -157,7 +157,7 @@ export default function Page({ params }: PageProps) {
               </CardHeader>
               <CardFooter className="flex justify-between">
                 <p className="font-normal text-sm text-slate-600 ">
-                  March 2023 - The Independent - Article
+                  March 2023 &middot; The Independent &middot; Article
                 </p>
                 <p>{"->"}</p>
               </CardFooter>
@@ -170,7 +170,7 @@ export default function Page({ params }: PageProps) {
               </CardHeader>
               <CardFooter className="flex justify-between">
                 <p className="font-normal text-sm text-slate-600 ">
-                  March 2023 - The Independent - Article
+                  March 2023 &middot; The Independent &middot; Article
                 </p>
                 <p>{"->"}</p>
               </CardFooter>
@@ -183,7 +183,7 @@ export default function Page({ params }: PageProps) {
               </CardHeader>
               <CardFooter className="flex justify-between">
                 <p className="font-normal text-sm text-slate-600 ">
-                  March 2023 - The Independent - Article
+                  March 2023 &middot; The Independent &middot; Article
                 </p>
                 <p>{"->"}</p>
               </CardFooter>
