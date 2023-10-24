@@ -1,19 +1,9 @@
 "use client";
 import { IBM_Plex_Mono } from "next/font/google";
-import { Fragment, useState } from "react";
-import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
-import {
-  MagnifyingGlassCircleIcon,
-  MagnifyingGlassIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  FunnelIcon,
-  MinusIcon,
-  PlusIcon,
-  Squares2X2Icon,
-} from "@heroicons/react/20/solid";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { cn } from "@/lib/utils";
 import MobileFiltersMenu from "./MobileFiltersMenu";
 
@@ -71,9 +61,6 @@ const filters = [
   //   },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 const font = IBM_Plex_Mono({
   weight: "400",
   subsets: ["latin"],
@@ -146,7 +133,7 @@ export default function Dashboard({ children }) {
                         {({ active }) => (
                           <a
                             href={option.href}
-                            className={classNames(
+                            className={cn(
                               option.current
                                 ? "font-medium text-gray-900"
                                 : "text-gray-500",
