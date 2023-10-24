@@ -91,11 +91,10 @@ export default function Dashboard({ children }) {
                 font.className
               )}
             >
-              {"warcrimes.fyi"}
+              {"unclassified.fyi"}
             </h1>
             <h2 className="text-sm font-mono mt-2">
-              Find out what UK politicians are saying on issues affecting
-              Palestine.
+              Your guide to political transparency.
             </h2>
           </div>
 
@@ -170,84 +169,39 @@ export default function Dashboard({ children }) {
         </div>
 
         <section
-          aria-labelledby="products-heading"
+          aria-labelledby="Politicians-heading"
           className="py-6 border-r border-gray-200 "
         >
-          <h2 id="products-heading" className="sr-only">
-            Products
-          </h2>
+          <h2 className="sr-only">Politicians</h2>
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5 ">
             {/* Filters */}
             <form className="hidden lg:block border-r border-gray-200 pr-2">
               <h3 className="sr-only">Categories</h3>
-              {/* <ul
-                  role="list"
-                  className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                >
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul> */}
-
               {filters.map((section) => (
-                <Disclosure
-                  as="div"
-                  key={section.id}
-                  className="border-b border-gray-200 py-6"
-                >
-                  {({ open }) => (
-                    <>
-                      <h3 className="-my-3 flow-root">
-                        <Disclosure.Button className="flex w-full items-center justify-between py-3 text-sm text-gray-400 hover:text-gray-500">
-                          <span className="font-medium text-gray-900">
-                            {section.name}
-                          </span>
-                          <span className="ml-6 flex items-center">
-                            {open ? (
-                              <MinusIcon
-                                className="h-5 w-5"
-                                aria-hidden="true"
-                              />
-                            ) : (
-                              <PlusIcon
-                                className="h-5 w-5"
-                                aria-hidden="true"
-                              />
-                            )}
-                          </span>
-                        </Disclosure.Button>
-                      </h3>
-                      <Disclosure.Panel className="pt-6">
-                        <div className="space-y-4">
-                          {section.options.map((option, optionIdx) => (
-                            <div
-                              key={option.value}
-                              className="flex items-center"
-                            >
-                              <input
-                                id={`filter-${section.id}-${optionIdx}`}
-                                name={`${section.id}[]`}
-                                defaultValue={option.value}
-                                type="checkbox"
-                                defaultChecked={option.checked}
-                                className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500"
-                              />
-                              <label
-                                htmlFor={`filter-${section.id}-${optionIdx}`}
-                                className="ml-3 text-sm text-gray-600"
-                              >
-                                {option.label}
-                              </label>
-                            </div>
-                          ))}
-                        </div>
-                      </Disclosure.Panel>
-                    </>
-                  )}
-                </Disclosure>
+                <div className="border-b border-gray-200 py-6" key={section.id}>
+                  <h3>{section.name}</h3>
+                  <div className="space-y-4 pt-4 pl-2">
+                    {section.options.map((option, optionIdx) => (
+                      <div key={option.value} className="flex items-center">
+                        <input
+                          id={`filter-${section.id}-${optionIdx}`}
+                          name={`${section.id}[]`}
+                          defaultValue={option.value}
+                          type="checkbox"
+                          defaultChecked={option.checked}
+                          className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500"
+                        />
+                        <label
+                          htmlFor={`filter-${section.id}-${optionIdx}`}
+                          className="ml-3 text-sm text-gray-600"
+                        >
+                          {option.label}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               ))}
             </form>
 
