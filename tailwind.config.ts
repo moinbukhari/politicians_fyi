@@ -78,11 +78,6 @@ module.exports = {
       xs: "475px",
       ...screens,
     },
-    screens: {
-      xxs: "361px",
-      xs: "475px",
-      ...screens,
-    },
   },
   plugins: [
     require("tailwindcss-animate"),
