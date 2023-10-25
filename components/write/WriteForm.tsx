@@ -15,23 +15,24 @@ import { Toaster } from "@/components/ui/toaster";
 
 // utils
 import genPromt from "@/app/api/utils/genPrompt";
+import useAutosizeTextArea from "./utils";
 
 const WriteForm = () => {
   const templateRef = useRef<null | HTMLDivElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [additionalInfo, setAdditionalInfo] = useState("");
   const [template, setTemplate] = useState("");
-  // TODO: Add onscreen editing
-  // const [isFinished, setIsFinished] = useState<boolean>(false);
+  const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
-  // toast
+  // set up toast for announcement of text copied
   const { toast } = useToast();
 
   // when ai response comes in, scroll to it
   const scroll = () => {
     if (templateRef.current !== null) {
-      templateRef.current.scrollIntoView({ behavior: "smooth" });
+      templateRef.current.scrollIntoView({ behavior: "instant" });
     }
   };
 
@@ -44,19 +45,17 @@ const WriteForm = () => {
         additionalInfo,
       },
     },
-    // TODO: Add onscreen editing
     onResponse() {
       scroll();
-      // setTemplate("");
-      // setIsFinished(false);
+      setTemplate("");
+      setIsEditMode(false);
     },
     onFinish(message) {
-      // setIsFinished(true);
-      // setTemplate(message.content);
-      // console.log("template", message.content);
+      setTemplate(message.content);
     },
   });
 
+  // process chatGPT response
   const lastMessage = messages[messages.length - 1];
   const generatedEmail =
     lastMessage?.role === "assistant" ? lastMessage.content : null;
@@ -71,6 +70,14 @@ const WriteForm = () => {
     () => setInput(genPromt({ name, address, additionalInfo })),
     [name, address, additionalInfo]
   );
+
+  // change to edit mode, so user can edit chatGPT output once it finishes
+  const onEditClick = () => {
+    setIsEditMode(true);
+  };
+
+  // autosizes edit mode text area
+  useAutosizeTextArea(textAreaRef.current, template);
 
   return (
     <div>
@@ -115,10 +122,10 @@ const WriteForm = () => {
               <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto mb-2">
                 Your generated email
               </h2>
-              <p>Click to copy email template.</p>
+              {!isEditMode && <p>Click to copy email template.</p>}
             </div>
             <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto whitespace-pre-line">
-              {template == "" ? (
+              {!isEditMode && (
                 <span
                   className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border "
                   onClick={() => {
@@ -132,17 +139,22 @@ const WriteForm = () => {
                 >
                   {generatedEmail}
                 </span>
-              ) : (
-                <Textarea
-                  value={template}
-                  onChange={(e) => setTemplate(e.target.value)}
-                />
+              )}
+              <Textarea
+                className={!isEditMode && "hidden"}
+                value={template ? template : generatedEmail}
+                ref={textAreaRef}
+                onChange={(e) => setTemplate(e.target.value)}
+              />
+              {!isEditMode && template && (
+                <Button onClick={onEditClick}>Edit Mode</Button>
               )}
             </div>
           </>
         )}
       </output>
-      <div className="pt-12" ref={templateRef}></div>
+
+      <div className="pt-24" ref={templateRef}></div>
     </div>
   );
 };
