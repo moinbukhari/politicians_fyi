@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 
 import { useState, useRef, useEffect } from "react";
 import { useChat, useCompletion } from "ai/react";
@@ -34,8 +35,8 @@ const WriteForm = () => {
     }
   };
 
-  // setup chat
-  const { setInput, handleSubmit, isLoading, messages } = useChat({
+  // setup vercel sdk chat
+  const { input, setInput, handleSubmit, isLoading, messages } = useChat({
     body: {
       options: {
         name,
@@ -65,15 +66,16 @@ const WriteForm = () => {
     scroll();
   }, [generatedEmail]);
 
-  const onSubmit = (e: any) => {
-    setInput(genPromt({ name, address, additionalInfo }));
-    handleSubmit(e);
-  };
+  // update chat input on value changes
+  useEffect(
+    () => setInput(genPromt({ name, address, additionalInfo })),
+    [name, address, additionalInfo]
+  );
 
   return (
     <div>
       <Toaster />
-      <form className="grid gap-4 mb-6" onSubmit={onSubmit}>
+      <form className="grid gap-4 mb-6" onSubmit={handleSubmit}>
         <Label htmlFor="name">Name</Label>
         <Input
           id="name"
