@@ -1,14 +1,10 @@
 import ProfileQuotes from "@/components/profile-quotes";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
+import WriteButton from "@/components/write/WriteButton";
 
 interface IProfilePageProps {
   params: {
@@ -19,7 +15,7 @@ interface IProfilePageProps {
 export default function Page(props: IProfilePageProps) {
   const { params } = props;
   const party = "Labour";
-  
+
   return (
     <main className="w-full min-h-screen flex justify-center ">
       <div className=" py-4 flex flex-col gap-10 px-8  justify-center items-center max-w-4xl">
@@ -88,7 +84,7 @@ export default function Page(props: IProfilePageProps) {
                 Personal record voting in the UK parliment
               </div>
             </div>
-            <Button>Write to My MP {"->"}</Button>
+            <WriteButton />
           </div>
           <div className="flex gap-6 flex-wrap sm:flex-nowrap">
             <Card className="w-full flex flex-col justify-between">
@@ -149,7 +145,7 @@ export default function Page(props: IProfilePageProps) {
                 Personal record voting in the UK parliment
               </div>
             </div>
-            <Button>Write to My MP {"->"}</Button>
+            <WriteButton />
           </div>
           <ProfileQuotes />
           <Link
