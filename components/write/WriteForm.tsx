@@ -115,9 +115,9 @@ const WriteForm = () => {
               <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto mb-2">
                 Your generated email
               </h2>
-              <p>Click to copy + paste template.</p>
+              <p>Click to copy email template.</p>
             </div>
-            <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto whitespace-pre-line h-full">
+            <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto whitespace-pre-line">
               {template == "" ? (
                 <span
                   className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border "
