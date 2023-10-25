@@ -25,12 +25,6 @@ const partyColors = {
   Ind: "ring-gray-600/20 text-gray-700 bg-gray-50",
 };
 
-function getPartyColoursByPerson(person: any) {
-  const [bg, text] = getPartyColoursByAbbreviation(person.party_abbreviation);
-
-  return `ring-${bg}-600/20 text-${text}-700 bg-${bg}-50`;
-}
-
 export default async function PoliticiansList() {
   const data = await getData();
   return (
